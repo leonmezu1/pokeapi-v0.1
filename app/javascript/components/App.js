@@ -1,10 +1,11 @@
 import React from "react"
+import PokeContainer from "../containers/PokeContainer"
 
 function App() {
   return (
-    <div>
-      <p>This should have change</p>
-    </div>
+    <>
+      <PokeContainer />
+    </>
   )
 }
 
