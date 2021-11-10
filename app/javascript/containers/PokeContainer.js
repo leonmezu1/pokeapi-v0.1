@@ -1,24 +1,19 @@
 import React, { useState } from 'react'
 import Catalog from '../components/Catalog'
 import Search from '../components/Search'
+import usePokedex from '../engine/usePokedex';
+import usePokeSearch from '../engine/usePokeSearch'
 
 function PokeContainer() {
-  const [pocketMonsters, setpocketMonsters] = useState({
-    name: '',
-    type: '',
-    activePokemon: null,
-    search_results: [],
-    query: ''
-  })
+  const [query, setquery] = useState('');
+  const [page, setpage] = useState(0);
+
+  const { pokemon, loading: searchLoading, error: searchError } = usePokeSearch(query);
+  const { pokedex, loading: pokedexLoading, error: pokedexError } = usePokedex(page);
 
   const handleQuery = (e) => {
-    setpocketMonsters({
-      ...pocketMonsters,
-      [e.target.name]: e.target.value,
-    })
+    setquery(e.target.value)
   }
-
-  const { query } = pocketMonsters;
 
   return (
     <>

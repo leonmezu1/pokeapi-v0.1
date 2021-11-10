@@ -5,6 +5,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../components/App'
+import axios from 'axios';
+
+const csrfToken = document.querySelector('[name="csrf-token"]').content;
+axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 
 
 document.addEventListener('DOMContentLoaded', () => {
