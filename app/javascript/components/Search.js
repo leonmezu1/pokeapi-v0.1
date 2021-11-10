@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function Search({ handleQuery, query }) {
   return (
@@ -21,7 +21,7 @@ function Search({ handleQuery, query }) {
         </div>
       </form>
     </>
-  )
+  );
 }
 
-export default Search
+export default Search;

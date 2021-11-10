@@ -2,18 +2,14 @@
 // like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
 // of the page.
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from '../components/App'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from '../components/App';
 import axios from 'axios';
 
 const csrfToken = document.querySelector('[name="csrf-token"]').content;
 axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 
-
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <App />,
-    document.getElementById('root'),
-  )
-})
+  ReactDOM.render(<App />, document.getElementById('root'));
+});
