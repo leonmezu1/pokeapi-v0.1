@@ -1,20 +1,19 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function usePokeSearch(query) {
-  const [loading, setLoading] = useState(true);
+export default function usePokeSearch(query, setLoading) {
   const [error, setError] = useState(false);
-  const [pokemon, setpokemon] = useState([]);
+  const [pokemons, setResults] = useState([]);
 
   useEffect(() => {
-    setpokemon([]);
+    setResults([]);
   }, [query]);
 
   useEffect(() => {
-    setLoading(true);
-    setError(false);
-    let cancel;
     if (query !== '') {
+      setLoading(true);
+      setError(false);
+      let cancel;
       axios({
         method: 'GET',
         url: 'http://localhost:3000/search',
@@ -22,7 +21,7 @@ export default function usePokeSearch(query) {
         cancelToken: new axios.CancelToken(c => (cancel = c)),
       })
         .then(response => {
-          console.log(response.data);
+          setResults(response.data.pokemons);
           setLoading(false);
         })
         .catch(e => {
@@ -34,5 +33,5 @@ export default function usePokeSearch(query) {
     }
   }, [query]);
 
-  return { loading, error, pokemon };
+  return { error, pokemons };
 }

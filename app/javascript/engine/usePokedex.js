@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function usePokedex(page) {
-  const [loading, setLoading] = useState(true);
+export default function usePokedex(page, setLoading) {
   const [error, setError] = useState(false);
   const [pokemons, setpokemons] = useState([]);
 
@@ -11,10 +10,10 @@ export default function usePokedex(page) {
   }, [page]);
 
   useEffect(() => {
-    setLoading(true);
-    setError(false);
-    let cancel;
     if (page !== '') {
+      setLoading(true);
+      setError(false);
+      let cancel;
       axios({
         method: 'GET',
         url: 'http://localhost:3000/pokedex',
@@ -22,7 +21,7 @@ export default function usePokedex(page) {
         cancelToken: new axios.CancelToken(c => (cancel = c)),
       })
         .then(response => {
-          console.log(response.data);
+          setpokemons(response.data.currentPokes);
           setLoading(false);
         })
         .catch(e => {
@@ -34,5 +33,5 @@ export default function usePokedex(page) {
     }
   }, [page]);
 
-  return { loading, error, pokemons };
+  return { error, pokemons };
 }
