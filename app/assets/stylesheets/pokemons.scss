@@ -1,3 +1,218 @@
 // Place all the styles related to the Pokemons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+	box-sizing: border-box;
+}
+
+body {
+  background: -webkit-linear-gradient(to right, #b4bd7f, #cc5843);
+	background: linear-gradient(to right, #b4bd7f, #cc5843);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+}
+
+h1 {
+	letter-spacing: 3px;
+}
+
+.shadow {
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+}
+
+.wrapper {
+  font-family: 'Lato';
+  position: relative;
+}
+
+.spin-wrap{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.spinner {
+  img {
+    width: 200px;
+    aspect-ratio: 1 / 1;
+  }
+  position: absolute;
+  top: 38.5%;
+  left: 42.5%;
+  transform: translate(-50%, -50%);
+  animation-name: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  z-index: 50;
+}
+
+.pagination-buttons {
+  display: flex;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  z-index: 15;
+  background-color: #ffffff50;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  button {
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    background-color: #142752;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:first-child {
+      margin-right: 15px;
+    }
+  }
+}
+
+.search {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 500px;
+  border-radius: 5px;
+  background: #fff;
+  z-index: 20;
+  h2 {
+    text-decoration: solid;
+    font-style: italic;
+    font-size: 28px;
+  }
+}
+
+.form-group {
+  label {
+    font-weight: normal;
+  }
+  input {
+    padding: 7.5px 15px;
+    outline: none;
+    font-size: 14;
+    border: none;
+  }
+  input::placeholder {
+    font-style:  italic;
+  }
+}
+
+.poke-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-evenly;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+.pokemon {
+	background-color: #eee;
+	border-radius: 20px;
+	margin: 20px;
+	padding: 25px;
+	text-align: center;
+  cursor: pointer;
+  &:last-child {
+    margin-bottom: 75px;
+  }
+
+  .img-container {
+    background-color: rgba(255, 255, 255, 0.842);
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    margin: 0 auto;
+  }
+
+  .img-container img {
+    margin-top: 20px;
+    max-width: 95%;
+    max-height: 110px;
+    mix-blend-mode: multiply;
+    z-index: 10;
+  }
+
+  .info {
+    margin-top: 20px;
+  }
+
+  .number {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-size: 0.8em;
+    padding: 5px 10px;
+  }
+
+  .name {
+    margin: 15px 0 7px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+  }
+
+  .info-group {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 7.5px;
+    margin-bottom: 5px;
+    &:last-child {
+      margin-bottom: 0;
+    } 
+  }
+
+  .info-group-title {
+    margin: 0;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  .type {
+    margin-right: 5px;
+    padding: 2.5px;
+    border: 1px solid #cccccc50;
+    border-radius: 5px;
+    text-align: center;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}

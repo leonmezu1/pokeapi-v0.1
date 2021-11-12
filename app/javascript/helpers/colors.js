@@ -1,0 +1,16 @@
+export const colors = {
+  fire: '#FDDFDF95',
+  grass: '#DEFDE095',
+  electric: '#FCF7DE95',
+  water: '#DEF3FD95',
+  ground: '#f4e7da95',
+  rock: '#d5d5d495',
+  fairy: '#fceaff95',
+  poison: '#98d7a595',
+  bug: '#f8d5a395',
+  dragon: '#97b3e695',
+  psychic: '#eaeda195',
+  flying: '#F5F5F595',
+  fighting: '#E6E0D495',
+  normal: '#F5F5F595',
+};

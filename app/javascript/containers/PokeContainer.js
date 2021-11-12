@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Catalog from '../components/Catalog';
 import Pokemon from '../components/Pokemon';
 import Search from '../components/Search';
 import usePokedex from '../engine/usePokedex';
 import usePokeSearch from '../engine/usePokeSearch';
+import Pagination from '../components/Pagination';
+import Spinner from '../components/Spinner';
 
 function PokeContainer() {
   const [query, setquery] = useState('');
-  const [page, setpage] = useState(0);
+  const [offset, setoffset] = useState(0);
+  const [itemsCount, setItemsCount] = useState(50);
   const [pokedexLoading, setLoading] = useState(false);
   const [searchLoading, setSearching] = useState(false);
   const [currentPokemons, setcurrentPokemons] = useState([]);
@@ -15,7 +17,8 @@ function PokeContainer() {
   const { pokemons: foundPokemons, pokemonError: searchFetchError } =
     usePokeSearch(query, setSearching);
   const { pokemons: pokedex, error: pokedexFetchError } = usePokedex(
-    page,
+    offset,
+    itemsCount,
     setLoading,
   );
 
@@ -24,7 +27,6 @@ function PokeContainer() {
   };
 
   useEffect(() => {
-    console.log(pokedex, foundPokemons);
     if (foundPokemons.length > 0) {
       setcurrentPokemons(foundPokemons);
       return;
@@ -33,19 +35,28 @@ function PokeContainer() {
     }
   }, [foundPokemons, pokedex]);
 
+  useEffect(() => {
+    console.log(offset);
+  }, [offset]);
+
   return (
     <>
-      <Search query={query} handleQuery={handleQuery} />
-      {pokedexLoading && <h1>Fetching Pokedex</h1>}
-      {searchLoading && <h1>Searching</h1>}
-      {currentPokemons.length > 0 && (
-        <>
-          {currentPokemons.map(poke => (
-            <Pokemon pokemonData={poke} key={poke.id} />
-          ))}
-        </>
-      )}
-      <Catalog />
+      {pokedexLoading && <Spinner />}
+      {searchLoading && <Spinner />}
+      <div className="wrapper">
+        <Search query={query} handleQuery={handleQuery} />
+        <div className="poke-container">
+          {currentPokemons.length > 0 && (
+            <>
+              {Array.isArray(currentPokemons) &&
+                currentPokemons.map(poke => (
+                  <Pokemon pokemonData={poke} key={poke.id} />
+                ))}
+            </>
+          )}
+        </div>
+        <Pagination setoffset={setoffset} itemsCount={itemsCount} />
+      </div>
     </>
   );
 }
