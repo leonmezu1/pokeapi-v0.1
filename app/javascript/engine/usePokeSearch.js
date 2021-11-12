@@ -16,15 +16,15 @@ export default function usePokeSearch(query, setLoading) {
       let cancel;
       axios({
         method: 'GET',
-        url: 'http://localhost:3000/search',
+        url: `${process.env.REACT_APP_BASE_URL}/search`,
         params: { search: query.trim() },
-        cancelToken: new axios.CancelToken((c) => (cancel = c)),
+        cancelToken: new axios.CancelToken(c => (cancel = c)),
       })
-        .then((response) => {
+        .then(response => {
           setResults(response.data.pokemons);
           setLoading(false);
         })
-        .catch((e) => {
+        .catch(e => {
           if (axios.isCancel(e)) return;
           console.log(e);
           setError(true);

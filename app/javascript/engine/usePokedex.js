@@ -16,15 +16,15 @@ export default function usePokedex(offset, itemsCount, setLoading) {
       let cancel;
       axios({
         method: 'GET',
-        url: 'http://localhost:3000/pokedex',
+        url: `${process.env.REACT_APP_BASE_URL}/pokedex`,
         params: { offset, items_count: itemsCount },
-        cancelToken: new axios.CancelToken((c) => (cancel = c)),
+        cancelToken: new axios.CancelToken(c => (cancel = c)),
       })
-        .then((response) => {
+        .then(response => {
           setpokemons(response.data.currentPokes);
           setLoading(false);
         })
-        .catch((e) => {
+        .catch(e => {
           if (axios.isCancel(e)) return;
           console.log(e);
           setError(true);
