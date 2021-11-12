@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import PropTypes from 'prop-types';
 
 const Modal = function ({ children, show, setshow }) {
   const modalRef = useRef();
@@ -21,3 +22,12 @@ const Modal = function ({ children, show, setshow }) {
 };
 
 export default Modal;
+
+Modal.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  show: PropTypes.bool.isRequired,
+  setshow: PropTypes.func.isRequired,
+};

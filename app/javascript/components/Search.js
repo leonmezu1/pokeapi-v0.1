@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Search({ handleQuery, query }) {
   return (
@@ -22,3 +23,8 @@ export default function Search({ handleQuery, query }) {
     </div>
   );
 }
+
+Search.propTypes = {
+  handleQuery: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
+};

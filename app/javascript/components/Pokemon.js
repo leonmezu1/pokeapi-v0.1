@@ -35,7 +35,7 @@ const Pokemon = function ({ pokemonData, handleClick, full }) {
         <div className="info-group">
           <h5 className="info-group-title">Types</h5>
           <div className="info-group-items">
-            {pokeTypes.map((type) => (
+            {pokeTypes.map(type => (
               <span
                 className="type"
                 key={`${pokemonData.name}-${type}`}
@@ -50,7 +50,7 @@ const Pokemon = function ({ pokemonData, handleClick, full }) {
           <div className="info-group">
             <h5 className="info-group-title">Evolutions</h5>
             <div className="info-group-items">
-              {pokeEvo.map((evo) => (
+              {pokeEvo.map(evo => (
                 <span
                   className="type"
                   key={`${pokemonData.name}-${evo.name}`}
@@ -65,7 +65,7 @@ const Pokemon = function ({ pokemonData, handleClick, full }) {
         <div className="info-group">
           <h5 className="info-group-title">Abilities</h5>
           <div className="info-group-items">
-            {pokeAbilities.map((ability) => (
+            {pokeAbilities.map(ability => (
               <span
                 className="type"
                 key={`${pokemonData.name}-${ability}`}
@@ -104,4 +104,6 @@ Pokemon.propTypes = {
     created_at: PropTypes.string.isRequired,
     updated_at: PropTypes.string.isRequired,
   }),
+  full: PropTypes.bool.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
