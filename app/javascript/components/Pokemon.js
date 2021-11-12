@@ -8,7 +8,7 @@ const Pokemon = function ({ pokemonData, handleClick, full }) {
   const pokeEvo = JSON.parse(pokemonData.evolutions);
   return (
     <div
-      className={`pokemon shadow ${full ? 'p-0 m-0 r-20' : null}`}
+      className={`pokemon shadow ${full ? 'p-10 m-0' : null}`}
       style={{ background: colors[pokeTypes[0]] }}
       onClick={() => handleClick(pokemonData)}
     >
