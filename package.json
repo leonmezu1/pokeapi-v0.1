@@ -1,6 +1,9 @@
 {
   "name": "pokeapi-v0-1",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/preset-react": "^7.16.0",
