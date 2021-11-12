@@ -5,30 +5,38 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
 
 * {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	vertical-align: baseline;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  box-sizing: border-box;
 }
 
 body {
   background: -webkit-linear-gradient(to right, #b4bd7f, #cc5843);
-	background: linear-gradient(to right, #b4bd7f, #cc5843);
+  background: linear-gradient(to right, #b4bd7f, #cc5843);
 
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 
 h1 {
-	letter-spacing: 3px;
+  letter-spacing: 3px;
 }
 
 .shadow {
   box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+}
+
+.p-0 {
+  padding: 0!important;
+}
+
+.m-0 {
+  margin: 0!important;
 }
 
 .wrapper {
@@ -36,7 +44,7 @@ h1 {
   position: relative;
 }
 
-.spin-wrap{
+.spin-wrap {
   width: 100vw;
   height: 100vh;
   position: absolute;
@@ -49,6 +57,7 @@ h1 {
     width: 200px;
     aspect-ratio: 1 / 1;
   }
+
   position: absolute;
   top: 38.5%;
   left: 42.5%;
@@ -83,6 +92,7 @@ h1 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+
     &:first-child {
       margin-right: 15px;
     }
@@ -99,6 +109,7 @@ h1 {
   border-radius: 5px;
   background: #fff;
   z-index: 20;
+
   h2 {
     text-decoration: solid;
     font-style: italic;
@@ -110,33 +121,41 @@ h1 {
   label {
     font-weight: normal;
   }
+
   input {
     padding: 7.5px 15px;
     outline: none;
     font-size: 14;
     border: none;
   }
+
   input::placeholder {
-    font-style:  italic;
+    font-style: italic;
   }
 }
 
+.not-found {
+  margin-top: 50px;
+  font-size: 30px;
+}
+
 .poke-container {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-evenly;
-	margin: 0 auto;
-	max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .pokemon {
-	background-color: #eee;
-	border-radius: 20px;
-	margin: 20px;
-	padding: 25px;
-	text-align: center;
+  background-color: #eee;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 25px;
+  text-align: center;
   cursor: pointer;
+
   &:last-child {
     margin-bottom: 75px;
   }
@@ -184,9 +203,10 @@ h1 {
     border-radius: 10px;
     padding: 7.5px;
     margin-bottom: 5px;
+
     &:last-child {
       margin-bottom: 0;
-    } 
+    }
   }
 
   .info-group-title {
@@ -201,18 +221,65 @@ h1 {
     border: 1px solid #cccccc50;
     border-radius: 5px;
     text-align: center;
+
     &:last-child {
       margin-right: 0;
     }
   }
 }
 
+//
+
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.styled-modal {
+  width: fit-content;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 5px;
+  transform: translate(-50%, -50%);
+  border: none;
+  align-items: center;
+  justify-content: normal;
+  background: #ccc;
+  z-index: 900;
+  overflow: auto;
+  border-radius: 20px
+}
+
+.close {
+  position: absolute;
+  cursor: pointer;
+  font-size: 18px;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  right: 0;
+  top: 0;
+  padding: 10px;
+  color: red;
+}
+
+// Animations
 
 @keyframes spin {
   from {
-      transform:rotate(0deg);
+    transform: rotate(0deg);
   }
+
   to {
-      transform:rotate(360deg);
+    transform: rotate(360deg);
   }
 }
+
+// React transition

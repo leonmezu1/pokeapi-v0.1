@@ -1,6 +1,7 @@
 import React from 'react';
 import pokeball from 'images/pokeball.png';
-function Spinner() {
+
+const Spinner = function () {
   return (
     <div className="spin-wrap">
       <div className="spinner">
@@ -8,6 +9,6 @@ function Spinner() {
       </div>
     </div>
   );
-}
+};
 
 export default Spinner;

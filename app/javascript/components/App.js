@@ -1,12 +1,10 @@
 import React from 'react';
 import PokeContainer from '../containers/PokeContainer';
 
-function App() {
+const App = function () {
   return (
-    <>
-      <PokeContainer />
-    </>
+    <PokeContainer />
   );
-}
+};
 
 export default App;

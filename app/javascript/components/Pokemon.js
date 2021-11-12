@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { colors } from '../helpers/colors';
-function Pokemon({ pokemonData }) {
+
+const Pokemon = function ({ pokemonData, handleClick, full }) {
   const pokeTypes = JSON.parse(pokemonData.pokemon_type);
   const pokeAbilities = JSON.parse(pokemonData.abilities);
+  const pokeEvo = JSON.parse(pokemonData.evolutions);
   return (
     <div
-      className="pokemon shadow"
+      className={`pokemon shadow ${full ? 'p-0 m-0 r-20' : null}`}
       style={{ background: colors[pokeTypes[0]] }}
+      onClick={() => handleClick(pokemonData)}
     >
       <div className="img-container">
         <img src={pokemonData.image} alt={pokemonData.name} />
@@ -17,10 +20,22 @@ function Pokemon({ pokemonData }) {
           {pokemonData.number.toString().padStart(3, '0')}
         </span>
         <h3 className="name">{pokemonData.name}</h3>
+        {full && (
+          <div className="info-group">
+            <h5 className="info-group-title">Description</h5>
+            <div className="info-group-items">
+              <p className="item">
+                {pokemonData.description
+                  .replace(/\n/g, ' ')
+                  .replace(/\f/g, ' ')}
+              </p>
+            </div>
+          </div>
+        )}
         <div className="info-group">
           <h5 className="info-group-title">Types</h5>
           <div className="info-group-items">
-            {pokeTypes.map(type => (
+            {pokeTypes.map((type) => (
               <span
                 className="type"
                 key={`${pokemonData.name}-${type}`}
@@ -31,10 +46,26 @@ function Pokemon({ pokemonData }) {
             ))}
           </div>
         </div>
+        {full && (
+          <div className="info-group">
+            <h5 className="info-group-title">Evolutions</h5>
+            <div className="info-group-items">
+              {pokeEvo.map((evo) => (
+                <span
+                  className="type"
+                  key={`${pokemonData.name}-${evo.name}`}
+                  style={{ background: colors[pokeTypes[0]] }}
+                >
+                  {`${evo.name[0].toUpperCase()}${evo.name.substring(1)}`}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="info-group">
           <h5 className="info-group-title">Abilities</h5>
           <div className="info-group-items">
-            {pokeAbilities.map(ability => (
+            {pokeAbilities.map((ability) => (
               <span
                 className="type"
                 key={`${pokemonData.name}-${ability}`}
@@ -54,7 +85,7 @@ function Pokemon({ pokemonData }) {
       </div>
     </div>
   );
-}
+};
 
 export default Pokemon;
 
