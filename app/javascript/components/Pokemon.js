@@ -77,9 +77,11 @@ const Pokemon = function ({ pokemonData, handleClick, full }) {
           </div>
         </div>
         <div className="info-group">
-          <h5 className="info-group-title">Weigth</h5>
+          <h5 className="info-group-title">Weight</h5>
           <div className="info-group-items">
-            <span className="item">{pokemonData.weight}</span>
+            <span className="item">
+              {(pokemonData.weight * 0.1).toFixed(2)} kg
+            </span>
           </div>
         </div>
       </div>

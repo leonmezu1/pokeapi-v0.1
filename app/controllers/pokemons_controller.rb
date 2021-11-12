@@ -45,4 +45,8 @@ class PokemonsController < ApplicationController
     end
     render json: {pokemons: found_pokemons}
   end
+
+  def pokemon_params
+    params.require(:pokemon).permit(:search, :offset, :items_count)
+  end
 end
