@@ -16,7 +16,7 @@ export default function usePokeSearch(query, setLoading) {
       let cancel;
       axios({
         method: 'GET',
-        url: `${process.env.REACT_APP_BASE_URL}/search`,
+        url: '/search',
         params: { search: query.trim() },
         cancelToken: new axios.CancelToken(c => (cancel = c)),
       })
